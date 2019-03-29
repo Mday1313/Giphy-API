@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+    margin: auto;
+}
+
+#buttons-view {
+    margin: 10px;
+    padding: 10px;
+}
+
+.awesome-btn {
+    margin: 10px;
+}
+
+#button-form {
+    padding: 10px;
+}
