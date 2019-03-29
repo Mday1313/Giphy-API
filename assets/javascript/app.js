@@ -11,12 +11,41 @@ var awesomeStuff = ["Volcano", "Aurora Borealis", "Deep Ocean", "Storms", "Ancie
 // set up function that will obtain 10 gifs for the button pushed
 
 function displayAwesomeStuff() {
- 
+//  pass in the data collected from click, save to variable
     var button = $(this).attr("data-name");
+// save api link with key to variable, add in data variable from above, limit the number of responses to 10
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=RstkIHHPOpk4OYsoQS7IfCXzczsswL78&limit=10";
+// AJAX call
+    $.ajax({
+       url: queryURL,
+       method: "GET"
+    }).then(function(response) {
+        console.log(response);
 
-    var queryURL = "" + button + "";
+        var resultDiv = $("<div class='awesome'>");
+// loop through response data array to pull out image and rating for each gif
+        for (var i = 0; i < response.data.length; i++) {
+
+            var imageURL = response.data[i].images.fixed_height;
+            var image = $("<img>").attr("src", imageURL);
+            resultDiv.append(image);
+
+            var rating = response.data[i].rating;
+            var ratingText = $("<p>").text("Rated: " + rating);
+            resultDiv.append(ratingText);
+
+            $("#giphy-view").prepend(resultDiv);
+
+        }
 
 
+
+
+
+
+
+
+    });
 }
 
 // function to create the buttons from each string in the array
@@ -75,7 +104,7 @@ generateButtons();
 
 
 
-
+$(document).on("click", ".awesome-btn", displayAwesomeStuff);
 
 
 
