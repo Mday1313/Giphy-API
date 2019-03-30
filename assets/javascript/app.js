@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 
 // create array of strings for topic of interest
-var awesomeStuff = ["Volcano", "Aurora Borealis", "Deep Ocean", "Storms", "Ancient Ruins", "Hot Air Balloons"]
+var awesomeStuff = ["Volcano", "Aurora Borealis", "Deep Ocean", "Storms", "Ancient architecture", "Hot Air Balloons", "Flying Machines", "Poetry", "Sunsets", "Jellyfish"];
 
 
 // set up function that will obtain 10 gifs for the button pushed
@@ -26,8 +26,9 @@ function displayAwesomeStuff() {
 // loop through response data array to pull out image and rating for each gif
         for (var i = 0; i < response.data.length; i++) {
 
-            var imageURL = response.data[i].images.fixed_height;
+            var imageURL = response.data[i].images.fixed_height_still.url;
             var image = $("<img>").attr("src", imageURL);
+           
             resultDiv.append(image);
 
             var rating = response.data[i].rating;
@@ -35,6 +36,8 @@ function displayAwesomeStuff() {
             resultDiv.append(ratingText);
 
             $("#giphy-view").prepend(resultDiv);
+
+           
 
         }
 
