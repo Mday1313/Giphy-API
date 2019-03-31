@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 
 // create array of strings for topic of interest
-var awesomeStuff = ["Volcano", "Aurora Borealis", "Ocean Creatures", "Storms", "Ancient architecture", "Hot Air Balloons", "Flying Machines", "Don Hertzfeldt", "Sunsets", "Jellyfish"];
+var awesomeStuff = ["Volcano", "Aurora Borealis", "Oceans", "Lightning", "Ancient architecture", "Hot Air Balloons", "Flying Machines", "Don Hertzfeldt", "Sunsets", "Jellyfish"];
 
 
 // set up function that will obtain 10 gifs for the button pushed
@@ -23,19 +23,21 @@ function displayAwesomeStuff() {
         console.log(response);
 
         var resultDiv = $("<div class='awesome'>");
+        
 // loop through response data array to pull out image and rating for each gif
         for (var i = 0; i < response.data.length; i++) {
 
-            var imageURL = response.data[i].images.fixed_height_still.url;
+            var imageURL = response.data[i].images.fixed_height.url;
             var image = $("<img>").attr("src", imageURL);
            
             
 
             var rating = response.data[i].rating;
-            var ratingText = $("<p>").text("Rated: " + rating);
+            var ratingText = $("<p>").html("Rated: " + rating);
             
-            resultDiv.prepend(image).append(ratingText);
-            $("#giphy-view").append(resultDiv);
+            // resultDiv.prepend(image, ratingText);
+            // resultDiv.prepend(ratingText);
+            $("#giphy-view").prepend(image, ratingText);
 
            
 
@@ -53,7 +55,7 @@ function displayAwesomeStuff() {
 
 // function to create the buttons from each string in the array
 function generateButtons() {
-
+   
     // clear out button
     $("#buttons-view").empty();
 
@@ -70,10 +72,10 @@ function generateButtons() {
 
         buttons.text(awesomeStuff[i]);
 
-        $("#buttons-view").append(buttons);
+        $("#buttons-view").prepend(buttons);
 
-
-
+        $("#button-iput").val("");
+       
     }
 }
 
@@ -94,8 +96,11 @@ $("#add-button").on("click", function (event) {
 
 
     generateButtons();
+   
 });
 generateButtons();
+
+
 // connect button to display 10 static non animated images from topic with their rating
 
 // when image is clicked animate, on second click stop animation (ask if on hover instead)
