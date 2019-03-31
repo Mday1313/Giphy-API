@@ -18,7 +18,16 @@ h1 {
 }
 
 #giphy-view {
-    margin: auto;
-  
-  
+    margin: 10px;
+   
+}
+img {
+    margin: 20px;
+}
+.gif-card { 
+    
+    background: purple;
+   
+    width: 960px;
+   
 }
