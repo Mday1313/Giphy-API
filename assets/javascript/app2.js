@@ -3,17 +3,23 @@ $(document).ready(function () {
 
 
     // create array of strings for topic of interest
-    var awesomeStuff = ["Volcano", "Aurora Borealis", "Oceans", "Lightning", "Ancient architecture", "Hot Air Balloons", "Flying Machines", "Don Hertzfeldt", "Sunsets", "Jellyfish"];
-    
+    var awesomeStuff = ["Travel", "Aurora Borealis", "Oceans", "Nature", "Art", "Hot Air Balloons", "Flying Machines", "Don Hertzfeldt", "Sunsets", "Dance"];
 
+    var numberLimit;
 
     // set up function that will obtain 10 gifs for the button pushed
 
     function displayAwesomeStuff() {
         //  pass in the data collected from click, save to variable
         var button = $(this).attr("data-name");
+
+        var numberLimit = $("#display-count").val();
+        var mediaType = $("#display-type").val();
+        console.log(mediaType);
         // save api link with key to variable, add in data variable from above, limit the number of responses to 10
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=RstkIHHPOpk4OYsoQS7IfCXzczsswL78&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=RstkIHHPOpk4OYsoQS7IfCXzczsswL78&limit=" + numberLimit + "&offset=+10";
+        
+        
         // AJAX call
         $.ajax({
             url: queryURL,
@@ -33,21 +39,24 @@ $(document).ready(function () {
                 // Get title
                 // var titleText = $("<p>").html(results[i].title);
                 // resultDiv.append(titleText);
-                // Get rating information
-                var ratingText = $("<p>").html("Rated: " + results[i].rating);
-                // Append rating to container
-                resultDiv.append(ratingText);
+
+
 
                 // Create image tag
                 var image = $("<img>");
                 // add image data for both still and animated
-                image.attr("src", results[i].images.fixed_height_small_still.url); 
-                image.attr("data-still", results[i].images.fixed_height_small_still.url); 
-                image.attr("data-animate", results[i].images.fixed_height_small.url); 
+                image.attr("src", results[i].images.fixed_height_small_still.url);
+                image.attr("data-still", results[i].images.fixed_height_small_still.url);
+                image.attr("data-animate", results[i].images.fixed_height.url);
+
                 // set the data state to still
-                image.attr("data-state", "still"); 
+                image.attr("data-state", "still");
                 image.addClass("image");
                 resultDiv.append(image);
+                // Get rating information
+                var ratingText = $("<p>").html("Rated: " + results[i].rating);
+                // Append rating to container
+                resultDiv.append(ratingText);
 
                 // insert image and rating to webpage
                 $("#giphy-view").prepend(resultDiv);
@@ -61,80 +70,81 @@ $(document).ready(function () {
 
         });
     }
-    
-            // function to create the buttons from each string in the array
-            function generateButtons() {
 
-                // clear out button
-                $("#buttons-view").empty();
+    // function to create the buttons from each string in the array
+    function generateButtons() {
 
-                // run for loop or forEach to generate button for each item in array
-                for (var i = 0; i < awesomeStuff.length; i++) {
-                    // create button tag in html, add class and data attribute
-                    // then append
-                    var buttons = $("<button>");
+        // clear out button
+        $("#buttons-view").empty();
 
-                    buttons.addClass("awesome-btn btn-sm");
-                    buttons.addClass("btn btn-dark");
+        // run for loop or forEach to generate button for each item in array
+        for (var i = 0; i < awesomeStuff.length; i++) {
+            // create button tag in html, add class and data attribute
+            // then append
+            var buttons = $("<button>");
 
-                    buttons.attr("data-name", awesomeStuff[i]);
+            buttons.addClass("awesome-btn btn-sm");
+            buttons.addClass("btn btn-dark");
 
-                    buttons.text(awesomeStuff[i]);
+            buttons.attr("data-name", awesomeStuff[i]);
 
-                    $("#buttons-view").prepend(buttons);
+            buttons.text(awesomeStuff[i]);
 
-                    $("#button-iput").val("");
+            $("#buttons-view").prepend(buttons);
 
-                }
-            }
+            $("#button-iput").val("");
 
-
-            // create on click function to push the userinput to the awesomeStuff list
-            $("#add-button").on("click", function (event) {
-                event.preventDefault();
-                // store user input
-                var newAwe = $("#button-input").val().trim();
-
-                //    push to array
-
-                //  FIGURE OUT WAY TO NOT LET WORDS REPEAT
-                awesomeStuff.push(newAwe);
+        }
+    }
 
 
+    // create on click function to push the userinput to the awesomeStuff list
+    $("#add-button").on("click", function (event) {
+        event.preventDefault();
+        // store user input
+        var newAwe = $("#button-input").val().trim();
+
+        //    push to array
+
+        //  FIGURE OUT WAY TO NOT LET WORDS REPEAT
+        awesomeStuff.push(newAwe);
 
 
 
-                generateButtons();
-
-            });
-            generateButtons();
 
 
-            // connect button to display 10 static non animated images from topic with their rating
+        generateButtons();
 
-            // when image is clicked animate, on second click stop animation (ask if on hover instead)
+    });
+    generateButtons();
 
 
+    // connect button to display 10 static non animated images from topic with their rating
+
+    // when image is clicked animate, on second click stop animation (ask if on hover instead)
 
 
 
 
 
 
-            $(document).on("click", ".awesome-btn", displayAwesomeStuff);
-
-            $(document).on("click", ".image", function(){
-                var state = $(this).attr('data-state');
-                if ( state == 'still'){
-                    $(this).attr('src', $(this).data('animate'));
-                    $(this).attr('data-state', 'animate');
-                }else{
-                    $(this).attr('src', $(this).data('still'));
-                    $(this).attr('data-state', 'still');
-                }
-            });
 
 
+    $(document).on("click", ".awesome-btn", displayAwesomeStuff);
+
+    $(document).on("click", ".image", function () {
+        var state = $(this).attr('data-state');
+        if (state == 'still') {
+
+            $(this).attr('src', $(this).data('animate'));
+            $(this).attr('data-state', 'animate');
+        } else {
+            $(this).attr('src', $(this).data('still'));
+            $(this).attr('data-state', 'still');
+        }
+    });
 
 
-        });
+
+
+});

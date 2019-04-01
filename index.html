@@ -40,16 +40,39 @@
                 <form id="button-form">
                     <label id="button-generator" for="button-input">What Inspires You?</label>
                     <input type="text" id="button-input"><br>
-
+                    
+                   
                     <input id="add-button" class="btn btn-dark" type="submit" value="Add a Button">
                 </form>
             </div>
             <div class="col-lg-1"></div>
-            <div class="col-lg-7">
+            <div class="col-lg-6">
 
                 <div id="buttons-view"></div>
             </div>
-            <div class="col-lg-2"></div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-2">
+                <div class="form-group">
+                    <label for="pwd">Amount of Inspiration:</label>
+                    <select id="display-count" class="custom-select" aria-labelledby="dropdownMenuButton">
+                      <option selected value="1">1</option>
+                      <!-- Setting the option for 5 as default -->
+                      <option value="5" >5</option>
+                      <option value="10"selected>10</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Type of Inspiration:</label>
+                    <select id="display-type" class="custom-select" aria-labelledby="dropdownMenuButton">
+                      <option selected value="gif" selected>GIF</option>
+                      <!-- Setting the option for 5 as default -->
+                      <option value="quote" >Quote</option>
+                      <option value="Photo">Photo</option>
+                    </select>
+                  </div>
+
+
+            </div>
         </div>
 
 
