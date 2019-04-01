@@ -6,20 +6,22 @@ $(document).ready(function () {
     var awesomeStuff = ["Travel", "Aurora Borealis", "Oceans", "Nature", "Art", "Hot Air Balloons", "Flying Machines", "Don Hertzfeldt", "Sunsets", "Dance"];
 
     var numberLimit;
+    console.log(numberLimit);
+    var mediaType = $("#display-type").val();
+    console.log(mediaType);
 
     // set up function that will obtain 10 gifs for the button pushed
 
-    function displayAwesomeStuff() {
+    function displayAwesomeGif() {
         //  pass in the data collected from click, save to variable
         var button = $(this).attr("data-name");
-
-        var numberLimit = $("#display-count").val();
-        var mediaType = $("#display-type").val();
-        console.log(mediaType);
+        numberLimit = $("#display-count").val();
         // save api link with key to variable, add in data variable from above, limit the number of responses to 10
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=RstkIHHPOpk4OYsoQS7IfCXzczsswL78&limit=" + numberLimit + "&offset=+10";
-        
-        
+        var gif = "https://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=RstkIHHPOpk4OYsoQS7IfCXzczsswL78&limit=" + numberLimit + "&offset=+10";
+       
+        var queryURL = gif;
+        console.log(mediaType);
+        console.log(numberLimit);
         // AJAX call
         $.ajax({
             url: queryURL,
@@ -39,8 +41,6 @@ $(document).ready(function () {
                 // Get title
                 // var titleText = $("<p>").html(results[i].title);
                 // resultDiv.append(titleText);
-
-
 
                 // Create image tag
                 var image = $("<img>");
@@ -69,6 +69,10 @@ $(document).ready(function () {
 
 
         });
+
+
+
+
     }
 
     // function to create the buttons from each string in the array
@@ -119,19 +123,20 @@ $(document).ready(function () {
     generateButtons();
 
 
-    // connect button to display 10 static non animated images from topic with their rating
+    
+
+    
+
+
+
+
+
+
+// connect button to display 10 static non animated images from topic with their rating
+
+    $(document).on("click", ".awesome-btn", displayAwesomeGif);
 
     // when image is clicked animate, on second click stop animation (ask if on hover instead)
-
-
-
-
-
-
-
-
-    $(document).on("click", ".awesome-btn", displayAwesomeStuff);
-
     $(document).on("click", ".image", function () {
         var state = $(this).attr('data-state');
         if (state == 'still') {
