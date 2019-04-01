@@ -1,11 +1,16 @@
 body {
     background: black;
 }
-
+* {
+	box-sizing: border-box;
+}
 label {
     color: whitesmoke;
+    text-align: center;
 }
-
+.jumbotron {
+    padding: 5px;
+}
 
 h1 {
     text-align: center;
@@ -14,11 +19,10 @@ h1 {
 
 
 
-#buttons-view {
+.gifDiv {
+    float: left;
     margin: 10px;
-    padding: 10px;
-   
-    margin-left: 10px;
+    
 }
 
 .awesome-btn {
@@ -34,40 +38,21 @@ h1 {
     
 }
 
-/* .btn-row {
-    /* background: url(../images/more-stars.jpeg); */
-} */
-.btn-container {
-    margin-left: 10px;
-    margin: auto;
-    text-align: center;
-    /* background: #236d72; */
+#giphy-view {
+   
+    background: black;
 }
 
-#giphy-view {
-    margin: 10px;
-   
-}
-img {
-    margin: 20px;
-    
-}
 .gif-card { 
     
-   background: black;
-   
-    width: 100%;
-   
-}
+    background: black;
+    
+     width: 100%;
+    
+ }
 
-p {
-    padding: 0;
-    margin: 0;
-    /* width: 30%; */
-    display: inline;
-    color: whitesmoke;
-}
-
-/* .awesome {
-    display: inline;
-} */
+ p {
+     color: whitesmoke;
+     font-size: 14px;
+    
+ }
