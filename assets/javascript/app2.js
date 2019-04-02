@@ -3,7 +3,7 @@ $(document).ready(function () {
 
 
     // create array of strings for topic of interest
-    var awesomeStuff = ["Travel", "Aurora Borealis", "Oceans", "Nature", "Art", "Hot Air Balloons", "Flying Machines", "Don Hertzfeldt", "Sunsets", "Dance"];
+    var awesomeStuff = ["Travel", "Aurora Borealis", "Oceans", "Nature", "Pop Art", "Laughter", "Flying Machines", "Creativity", "Sunsets", "National Geographic", "Dance"];
 
     var numberLimit;
     console.log(numberLimit);
@@ -28,7 +28,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response);
-
+            $("#giphy-view").empty();
             var results = response.data;
 
             // loop through response data array to pull out image and rating for each gif
@@ -96,9 +96,10 @@ $(document).ready(function () {
 
             $("#buttons-view").prepend(buttons);
 
-            $("#button-iput").val("");
-
+            $("#button-input").val("");
+           
         }
+        
     }
 
 
@@ -139,7 +140,7 @@ $(document).ready(function () {
     // when image is clicked animate, on second click stop animation (ask if on hover instead)
     $(document).on("click", ".image", function () {
         var state = $(this).attr('data-state');
-        if (state == 'still') {
+        if (state == "still") {
 
             $(this).attr('src', $(this).data('animate'));
             $(this).attr('data-state', 'animate');
@@ -148,7 +149,6 @@ $(document).ready(function () {
             $(this).attr('data-state', 'still');
         }
     });
-
 
 
 

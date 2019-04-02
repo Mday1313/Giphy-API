@@ -11,10 +11,16 @@ label {
 .jumbotron {
     padding: 5px;
     background: url(../images/colorful-background-30.jpg);
+    font-weight: bold;
+}
+.awesome-btn {
+  color: whitesmoke;
+  text-emphasis-color: black;
 }
 
 h1 {
     text-align: center;
+    font-weight: bold;
     /* margin: auto; */
 }
 
@@ -32,6 +38,11 @@ h1 {
 
 #add-button {
     margin-top: 10px;
+    background: #63379f;
+}
+
+#button-input{
+  background: #57abea;
 }
 
 #button-form {
@@ -58,56 +69,8 @@ h1 {
     
  }
 
- .popUp {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  .popUp  {
-    visibility: hidden;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -80px;
-  }
-  
-  .popUp ::after {
-    content: ".image";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-  }
-  
-  /* Toggle this class - hide and show the popup */
-  .popUp .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-  }
-  
-  /* Add animation (fade in the popup) */
-  @-webkit-keyframes fadeIn {
-    from {opacity: 0;} 
-    to {opacity: 1;}
-  }
-  
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
-  }
+#display-count { 
+  background: #e55f7b;
+  color: black;
+  font-weight: bold;
+}
