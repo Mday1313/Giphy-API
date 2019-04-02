@@ -3,7 +3,7 @@ $(document).ready(function () {
 
 
     // create array of strings for topic of interest
-    var awesomeStuff = ["Travel", "Aurora Borealis", "Oceans", "Nature", "Pop Art", "Laughter", "Flying Machines", "Creativity", "Sunsets", "National Geographic", "Dance"];
+    var awesomeStuff = ["Travel", "Aurora Borealis", "Oceans", "Nature", "Pop Art", "Laughter", "Flying Machines", "Creativity", "Space", "National Geographic", "Dance"];
 
     var numberLimit;
     console.log(numberLimit);
