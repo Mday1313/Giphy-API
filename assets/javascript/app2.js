@@ -3,12 +3,11 @@ $(document).ready(function () {
 
 
     // create array of strings for topic of interest
-    var awesomeStuff = ["Travel", "Aurora Borealis", "Oceans", "Nature", "Pop Art", "Laughter", "Flying Machines", "Creativity", "Space", "National Geographic", "Dance"];
+    var awesomeStuff = ["Time Travel", "Aurora Borealis", "Sports Fans", "Pop Art", "Space Pizzas", "Laughter", "Flying Machines", "Bucket Hats", "Space", "Carnivorous Plants", "Line Dancing", "Miniature Poodles"];
 
     var numberLimit;
     console.log(numberLimit);
-    // var mediaType = $("#display-type").val();
-    // console.log(mediaType);
+    
 
     // set up function that will obtain 10 gifs for the button pushed
 
@@ -38,7 +37,7 @@ $(document).ready(function () {
                 // Container (div) for each gif to sit inside
                 var resultDiv = $("<div>");
                 resultDiv.addClass("gifDiv");
-                // Get title
+                // Get title (Removed because they are too long and messy )
                 // var titleText = $("<p>").html(results[i].title);
                 // resultDiv.append(titleText);
 
