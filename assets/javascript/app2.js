@@ -7,8 +7,8 @@ $(document).ready(function () {
 
     var numberLimit;
     console.log(numberLimit);
-    var mediaType = $("#display-type").val();
-    console.log(mediaType);
+    // var mediaType = $("#display-type").val();
+    // console.log(mediaType);
 
     // set up function that will obtain 10 gifs for the button pushed
 
@@ -17,10 +17,10 @@ $(document).ready(function () {
         var button = $(this).attr("data-name");
         numberLimit = $("#display-count").val();
         // save api link with key to variable, add in data variable from above, limit the number of responses to 10
-        var gif = "https://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=RstkIHHPOpk4OYsoQS7IfCXzczsswL78&limit=" + numberLimit + "&offset=+10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=RstkIHHPOpk4OYsoQS7IfCXzczsswL78&limit=" + numberLimit + "&offset=+10";
        
-        var queryURL = gif;
-        console.log(mediaType);
+        // var queryURL = gif;
+        // console.log(mediaType);
         console.log(numberLimit);
         // AJAX call
         $.ajax({
